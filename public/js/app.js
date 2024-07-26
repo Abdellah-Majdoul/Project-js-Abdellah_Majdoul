@@ -28,7 +28,63 @@ const signUp=()=>{
         firstLetter = prompt("Your Name : ")
       }
    // email  debut
+let gmail = prompt('Your email: ');
 
+function isValidEmail(email) {
+  let nospaceEmail = email.trim();
+  if (nospaceEmail !== nospaceEmail.toLowerCase()) {
+    return false;
+  }
+  
+  if (nospaceEmail.includes(' ')) {
+    return false;
+  }
+
+  if (nospaceEmail.length <= 10) {
+    return false;
+  }
+
+  if (!/^[a-z0-9]+@[a-z0-9]+\.[a-z]+$/.test(nospaceEmail)) {
+    return false;
+  }
+
+  return true;
+}
+
+while (!isValidEmail(gmail)) {
+  alert('Invalid email, please try again.');
+  gmail = prompt('Your email: ');
+}
+alert('Email is valid!');
+
+const createUser = (firstLetter, gmail, userAge, ps) => {
+
+    let exist = database.find(e => e.gmail == gmail);
+
+    if (!exist) {
+        let user = {
+            firstLetter,
+            userAge,
+            gmail,
+            ps
+        }
+        database.push(user)
+       
+        alert("account createsd successfully ")
+
+    } else {
+        console.log(gmail + " rah kyn");
+    }
+
+}
+// email fin
+    //age debut
+    let userAge = prompt('Your Age : ')
+    let ps = prompt('Your Password : ')   
+    let users= new User(firstLetter,gmail,userAge,ps)
+    database.push(users)
+    console.log(database);
+    console.log("create account ");
 }
 //  age fin
 const signIn=()=>{
