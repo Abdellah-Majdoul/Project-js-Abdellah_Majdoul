@@ -55,7 +55,7 @@ while (!isValidEmail(gmail)) {
   alert('Invalid email, please try again.');
   gmail = prompt('Your email: ');
 }
-alert('Email is valid!');
+
 
 const createUser = (firstLetter, gmail, userAge, ps) => {
 
@@ -80,13 +80,28 @@ const createUser = (firstLetter, gmail, userAge, ps) => {
 // email fin
     //age debut
     let userAge = prompt('Your Age : ')
+    
+    function isValidNumber(userAge) {
+        let nospaceAge=userAge.trim()
+        let isNum= /^\d+$/.test(nospaceAge)
+        let isCorrectLength = nospaceAge.length > 0 && nospaceAge.length < 3;
+        return isNum && isCorrectLength
+      }
+      while (!isValidNumber(userAge)) {
+        alert('Please enter a valid number.(1-99)');
+        userAge = prompt('Your Age : ')
+       
+        
+      }
+      
+    //  age fin
     let ps = prompt('Your Password : ')   
     let users= new User(firstLetter,gmail,userAge,ps)
     database.push(users)
     console.log(database);
     console.log("create account ");
 }
-//  age fin
+
 const signIn=()=>{
     gmail = prompt('Your email : ')
     ps = prompt('Your Password : ') 
