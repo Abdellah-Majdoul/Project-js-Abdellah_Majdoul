@@ -1,5 +1,5 @@
 
-let userBank=prompt('sign-up ro sign-in or change')
+let userBank=prompt('sign-up ro sign-in or change :')
 const database =[]
 class User{
     constructor(name,email,age,password,comfirmPs){
@@ -142,7 +142,7 @@ const signIn = () => {
     if (amount > 0 && amount <= user.balance) {
       user.balance -= amount;
       alert(`Withdrawal successful.  ${user.balance}`);
-      user.transaction.push(`Withdrew ${amount}`);
+      
     } else {
       alert("Invalid amount.");
     }
@@ -153,7 +153,7 @@ const signIn = () => {
       service = prompt('Choose a service: logout, withdraw, deposit, loan, invest, history').toLowerCase();
   
       if (service === "logout") {
-        alert("You are logged out.");
+        alert("logged out.");
       } else if (service === "withdraw") {
         withdrawMoney(users);
       } 
@@ -164,12 +164,14 @@ const signIn = () => {
     
     gmail=prompt('your email :')
     let changeps= prompt('your new password :')
+    alert("password changing")
  
    }
 
 const truc =()=>{
-    while (userBank=="" || userBank =="exit") {
-        userBank=prompt('sign-up or sign-in or change ps')
+    while (userBank=="" || userBank =="exit" ||userBank==" ") {
+        userBank=prompt('sign-up ro sign-in or change :')
+
         
     }
     if (userBank == "sign-up") {
