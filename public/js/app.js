@@ -156,9 +156,7 @@ const signIn = () => {
         alert("You are logged out.");
       } else if (service === "withdraw") {
         withdrawMoney(users);
-      } else if (service === "deposit") {
-        depositMoney(users);
-      }  
+      } 
     } while (service !== "logout");
   }
  
