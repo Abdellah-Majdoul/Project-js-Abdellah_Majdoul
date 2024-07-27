@@ -161,12 +161,7 @@ const signIn = () => {
       }  
     } while (service !== "logout");
   }
-  const changPassword =()=>{
-    
-   gmail=prompt('your email :')
-   let changeps= prompt('your new password :')
-
-  }
+ 
 
 
 const truc =()=>{
