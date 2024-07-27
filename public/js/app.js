@@ -8,6 +8,7 @@ class User{
         this.age=age
         this.password=password
         this.comfirmPs=comfirmPs
+        this.balance=0
     }   
 }
 const signUp=()=>{
@@ -117,7 +118,55 @@ const createUser = (firstLetter, gmail, userAge, ps) => {
     signIn()
 }
 
+const signIn = () => {
+     gmail = prompt('Your Email: ').trim();
+     ps = prompt('Your Password: ').trim();
+  
+    let  finduser = database.find(user => user.email === gmail);
+    
+    if (!finduser) {
+      alert("Email not found.");
+      return;
+    }
+  
+    if (finduser.password === ps) {
+      alert("Login successful!");
+    } else {
+      alert("Incorrect password.");
+    
+    }      
+    bankingServices()
+  }
+  const withdrawMoney = (user) => {
+    let amount = parseInt(prompt("Enter amount to withdraw: "));
+    if (amount > 0 && amount <= user.balance) {
+      user.balance -= amount;
+      alert(`Withdrawal successful.  ${user.balance}`);
+      user.transaction.push(`Withdrew ${amount}`);
+    } else {
+      alert("Invalid amount.");
+    }
+  }
+  const bankingServices = (users) => {
+    let service;
+    do {
+      service = prompt('Choose a service: logout, withdraw, deposit, loan, invest, history').toLowerCase();
+  
+      if (service === "logout") {
+        alert("You are logged out.");
+      } else if (service === "withdraw") {
+        withdrawMoney(users);
+      } else if (service === "deposit") {
+        depositMoney(users);
+      }  
+    } while (service !== "logout");
+  }
+  const changPassword =()=>{
+    
+   gmail=prompt('your email :')
+   let changeps= prompt('your new password :')
 
+  }
 
 
 const truc =()=>{
