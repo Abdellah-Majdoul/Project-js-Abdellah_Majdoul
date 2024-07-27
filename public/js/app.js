@@ -114,13 +114,14 @@ const createUser = (firstLetter, gmail, userAge, ps) => {
     let users= new User(firstLetter,gmail,userAge,nomiddlePs,comfmPs)
     database.push(users)
     console.log(database);
-    console.log("create account ");
+    console.log("created account ");
     signIn()
 }
 
 const signIn = () => {
-     gmail = prompt('Your Email: ').trim();
-     ps = prompt('Your Password: ').trim();
+    gmail = prompt('Your Email: ');
+    ps = prompt('Your Password: ').trim();
+    
   
     let  finduser = database.find(user => user.email === gmail);
     
@@ -135,19 +136,19 @@ const signIn = () => {
       alert("Incorrect password.");
     
     }      
-    bankingServices()
+    Chooseervices()
   }
-  const withdrawMoney = (user) => {
+  const withdraw = (user) => {
     let amount = parseInt(prompt("Enter amount to withdraw: "));
     if (amount > 0 && amount <= user.balance) {
       user.balance -= amount;
       alert(`Withdrawal successful.  ${user.balance}`);
       
     } else {
-      alert("Invalid amount.");
+      alert("m3ndkch flooooos.");
     }
   }
-  const bankingServices = (users) => {
+  const Chooseervices = (users) => {
     let service;
     do {
       service = prompt('Choose a service: logout, withdraw, deposit, loan, invest, history').toLowerCase();
@@ -155,7 +156,7 @@ const signIn = () => {
       if (service === "logout") {
         alert("logged out.");
       } else if (service === "withdraw") {
-        withdrawMoney(users);
+        withdraw(users);
       } 
     } while (service !== "logout");
   }
