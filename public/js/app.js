@@ -2,11 +2,12 @@
 let userBank=prompt('sign-up ro sign-in or change')
 const database =[]
 class User{
-    constructor(name,email,age,password){
+    constructor(name,email,age,password,comfirmPs){
         this.name=name
         this.email=email
         this.age=age
         this.password=password
+        this.comfirmPs=comfirmPs
     }   
 }
 const signUp=()=>{
@@ -95,17 +96,30 @@ const createUser = (firstLetter, gmail, userAge, ps) => {
       }
       
     //  age fin
-    let ps = prompt('Your Password : ')   
-    let users= new User(firstLetter,gmail,userAge,ps)
+    let ps = prompt('Your Password : ') 
+    let nospacePs=ps.trim()
+    let nomiddlePs=nospacePs.replace(/\s+(?=.)/, '')  
+    if (/[^a-zA-Z ]/.test(nomiddlePs) && nomiddlePs.length>= 7) {
+        alert('enter special character : @, #, -, +, *, /');
+        ps = prompt('Your Password : ') 
+      }
+
+    let comfmPs=prompt('comfirm password : ')
+   if (nomiddlePs ==comfmPs) {
+    alert("merhba")
+   }else{
+    alert("you are blokeed")
+   }
+    let users= new User(firstLetter,gmail,userAge,nomiddlePs,comfmPs)
     database.push(users)
     console.log(database);
     console.log("create account ");
+    signIn()
 }
 
-const signIn=()=>{
-    gmail = prompt('Your email : ')
-    ps = prompt('Your Password : ') 
-}
+
+
+
 const truc =()=>{
     while (userBank=="" || userBank =="exit") {
         userBank=prompt('sign-up or sign-in or change ps')
@@ -118,7 +132,7 @@ const truc =()=>{
         signIn()
     }
     if (userBank =="change") {
-        let ps=prompt("changing password : ")
+        changPassword()
     }
 }
 truc()
