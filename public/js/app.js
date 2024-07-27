@@ -147,7 +147,20 @@ const signIn = () => {
       alert("Invalid amount.");
     }
   }
+  const bankingServices = (users) => {
+    let service;
+    do {
+      service = prompt('Choose a service: logout, withdraw, deposit, loan, invest, history').toLowerCase();
   
+      if (service === "logout") {
+        alert("You are logged out.");
+      } else if (service === "withdraw") {
+        withdrawMoney(users);
+      } else if (service === "deposit") {
+        depositMoney(users);
+      }  
+    } while (service !== "logout");
+  }
  
   const changPassword =()=>{
     
